@@ -27,3 +27,4 @@ document.body.innerHTML = `
   <input type="password" id="pw" placeholder="password">
   <button onclick="checkPw()">送信</button>
 `;
+document.title = 'パスワードを入力';
