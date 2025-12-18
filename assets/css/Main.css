@@ -206,6 +206,10 @@ main {
   margin-right: 0.5rem;
 }
 
+.card > p:not(.desc) {
+  margin: 0;
+}
+
 button {
   background: linear-gradient(to top right, var(--accent), var(--accentGrey));
   border: 2.5px solid var(--accentBlack);
