@@ -247,7 +247,6 @@ kbd {
   border: solid 3px var(--bgDot);
   border-radius: 7.5px;
 }
-
 footer {
   border-radius: 15px 15px 0 0;
   background: var(--bg);
@@ -261,18 +260,26 @@ footer {
   transform: translateY(274px);
   transition: transform 0.35s ease;
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto;
-  justify-content: center;
+
+  /* リンク部分を 3列×2行に */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto) auto; 
+  /* 最後の auto はコピーライト用の行 */
+
+  justify-items: center;
+  align-items: center;
   gap: 0.75rem;
 }
 
 footer > .desc {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1;   /* 全幅に広げる */
+  grid-row: 3;           /* 最下段に固定 */
   justify-self: center;
   align-self: end;
   margin-bottom: 0.2rem;
 }
+
+
 footer > *:first-child {
   margin-top: 35px;
 }
