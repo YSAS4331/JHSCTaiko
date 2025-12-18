@@ -1,12 +1,60 @@
-const $ = (s,r=document) => r.querySelector(s);
+const mod = window.modules;
 
-const search = $('#search');
-const searchBar = $('#searchBar');
+const search = mod.$('#search');
+const searchBar = mod.$('#searchBar');
 
-search.addEventListener('focus', () => {
-  searchBar.classList.add('active');
-});
+mod.chain(search)
+  .on('focus', () => mod.add(searchBar, 'active'))
+  .on('blur', () => mod.rmv(searchBar, 'active'))
+  .on('keydown', e => {
+    if (e.key !== 'Enter') return;
+    // 検索結果画面へ
+  });
 
-search.addEventListener('blur', () => {
-  searchBar.classList.remove('active');
-});
+// 記事のアニメーション
+let animQueue = [];
+let intervalID = null;
+
+const animClass = () => {
+  if (animQueue.length === 0) {
+    clearInterval(intervalID);
+    intervalID = null;
+    return;
+  }
+
+  const { el } = animQueue.shift();
+  requestAnimationFrame(() => mod.add(el, 'active'));
+};
+
+const pushQueue = (el, bool) => {
+  if (bool) {
+    animQueue.push({ el, bool });
+  
+    if (!intervalID) {
+      intervalID = setInterval(animClass, 50);
+    }
+  } else {
+    mod.rmv(el, 'active');
+  }
+};
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    pushQueue(e.target, e.isIntersecting);
+  });
+}, { threshold: 0.2 });
+
+mod.$$('.listItem').forEach(el => observer.observe(el));
+
+// header テーマボタン
+const themeBtn = mod.$('#theme');
+let themeNum = 0;
+
+const themeTexts = ["sun", "moon", "desktop"];
+
+mod.on('click', () => {
+  themeBtn.classList.remove('change');
+  themeNum = (themeNum + 1) % themeTexts.length;
+  mod.$('i', themeBtn).className = `fa-solid fa-${themeTexts[themeNum]}`;
+  themeBtn.classList.add('change');
+}, themeBtn);
