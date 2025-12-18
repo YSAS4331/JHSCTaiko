@@ -3,16 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>J.H.S.C 太鼓 非公式サイト</title>
+    <title>J.H.S.C 太鼓 公式サイト</title>
     <link rel="stylesheet" href="./assets/css/Variables.css">
     <link rel="stylesheet" href="./assets/css/Main.css">
 
     <!-- CDN読み込み -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- 遅延なしスクリプト読み込み -->
+    <script src="./assets/js/Functions.js"></script>
   </head>
   <body>
     <header>
       <img src="https://yt3.googleusercontent.com/twZYdfeTVB_M-HR5vVTSP8fjGC7wzctFj4Baa-Pv215TBC2QfEMZdRUQ1wggkyvFMLS3UhXdOWI=s120-c-k-c0x00ffffff-no-rj" class="icon" style="height: 90%;">
+      <div id="headerRight">
+        <button id="setting">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <button id="theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+      </div>
     </header>
     <main>
       <div class="container">
@@ -21,12 +32,64 @@
           <input type="text" id="search" placeholder="動画を検索する...">
           <button id="searchBtn">検索する<i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <div class="contents">
-        </div>
-        <div style="height: 2000px"></div>
+        <article class="contents">
+          <section class="card">
+            <h3>人気の動画</h3>
+            <p class="desc">視聴数が多い動画を順にまとめています</p>
+            <div class="list">
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+            </div>
+          </section>
+          <section class="card">
+            <h3>新着動画</h3>
+            <p class="desc">新しい動画を順にまとめています</p>
+            <div class="list">
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+            </div>
+          </section>
+          <section class="card">
+            <h3>カテゴリ一覧</h3>
+            <p class="desc">カテゴリごとに動画を分けています</p>
+            <div class="list">
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+            </div>
+          </section>
+          <section class="card">
+            <h3>おすすめ動画</h3>
+            <p class="desc">投稿者がおすすめしている動画をまとめています</p>
+            <div class="list">
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+              <div class="listItem"></div>
+            </div>
+          </section>
+        </article>
       </div>
     </main>
-    <script src="./assets/js/main.js"></script>
-    <!--<script src="./password.js"></script>-->
+
+    <footer>
+      <p class="desc">&copy; 2025 <a href="https://www.youtube.com/@J.H.S.C.太鼓" target="_blank" rel="noopener noreferrer">J.H.S.C 太鼓</a>. All rights reserved.</p>
+    </footer>
+
+    <!-- 遅延ありスクリプト読み込み -->
+    <script src="./assets/js/Main.js"></script>
   </body>
 </html>
