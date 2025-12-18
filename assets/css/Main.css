@@ -26,6 +26,36 @@ header {
   display: flex;
   align-items: center;
   gap: 5px;
+  z-index: 999;
+}
+
+.icon {
+  aspect-ratio: 1/1;
+  height: auto;
+  width: auto;
+  border-radius: 50%;
+}
+
+#headerRight {
+  height: 90%;
+  display:flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 1rem;
+  flex: 1;
+}
+
+#headerRight > button {
+  height: 90%;
+  width: auto;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+#headerRight > button:hover i {
+  animation: spin 1s ease;
 }
 
 main {
@@ -55,6 +85,12 @@ main {
   align-items: center;
   gap: 8px;
   transition: transform 0.5s ease;
+  z-index: 1000;
+  margin-bottom: 3rem;
+}
+
+#searchBar.active {
+  transform: translateY(-2px);
 }
 
 #searchIcon {
@@ -68,22 +104,14 @@ main {
   flex: 1;
 }
 
-#searchBar.active {
-  transform: scale(1.025);
-  z-index: 1000;
-}
-
 #searchBtn {
-  background: linear-gradient(to top right, var(--accent), var(--accentGrey));
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 34px;
   min-width: 100px;
   margin-right: 0.5rem;
-  border: 2.5px solid var(--accentBlack);
   border-radius: 17px;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
 }
@@ -94,6 +122,94 @@ main {
 
 #searchBtn:hover > i {
   transform: translateX(5px);
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 50%;
+  background: var(--white);
+  border: 2px dashed var(--bgDot);
+  border-radius: 25px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card > h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--accentGrey);
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.card > .list {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card > .list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.card > .list::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--bgDot) 50%, white);
+  border-radius: 3px;
+}
+
+.card > .list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.listItem {
+  opacity: 0;
+  transform: translateY(30px);
+  min-width: 200px;
+  height: auto;
+  aspect-ratio: 3/2;
+  background: var(--white);
+  border: 2px dashed var(--accentBlack);
+  border-radius: 15px;
+  padding: 1rem;
+  scroll-snap-align: start;
+  transition: opacity .3s ease, transform .5s ease;
+  cursor: pointer;
+}
+
+.listItem.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.card > .list > .listItem:last-child {
+  margin-right: 0.5rem;
+}
+
+button {
+  background: linear-gradient(to top right, var(--accent), var(--accentGrey));
+  border: 2.5px solid var(--accentBlack);
+  cursor: pointer;
 }
 
 .keys {
@@ -110,6 +226,15 @@ main {
   margin-right: 0.3rem;
 }
 
+a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 kbd {
   text-transform: uppercase;
   font-size: 0.95rem;
@@ -119,9 +244,43 @@ kbd {
   border-radius: 7.5px;
 }
 
-.icon {
-  aspect-ratio: 1/1;
-  height: auto;
-  width: auto;
-  border-radius: 50%;
+footer {
+  border-radius: 15px 15px 0 0;
+  background: var(--bg);
+  border: 2px dashed var(--accentBlack);
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  transform: translateY(274px);
+  transition: transform 0.35s ease;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+footer > .desc {
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: end;
+  margin-bottom: 0.2rem;
+}
+
+footer:hover {
+  transform: translateY(0);
+}
+
+@keyframes spin {
+  50% { transform: rotateZ(60deg) }
+  100% { transform: rotateZ(0deg) }
+}
+
+@media(max-width:768px) {
+  .card {
+    width: 90%;
+  }
 }
