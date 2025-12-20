@@ -207,6 +207,22 @@ main {
   margin-right: 0.5rem;
 }
 
+.view {
+  position: relative;
+  margin-left: 42px;
+}
+
+.view::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;utf8,<svg%20width='40'%20height='20'%20viewBox='0%200%20120%2060'%20xmlns='http://www.w3.org/2000/svg'><ellipse%20cx='60'%20cy='30'%20rx='40'%20ry='20'%20fill='white'%20stroke='black'%20stroke-width='3'/><circle%20cx='60'%20cy='30'%20r='14'%20fill='black'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .card > p:not(.desc) {
   margin: 0;
 }
