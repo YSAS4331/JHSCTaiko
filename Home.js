@@ -1,5 +1,5 @@
 (async () => {
-  const { $ } = window.modules;
+  const { $,$$ } = window.modules;
   const res = await fetch('./videos.json');
   const datas = await res.json();
 
@@ -20,4 +20,5 @@
   }).join('');
 
   $('#likeCount').innerHTML = likeCountHtml;
+  $$('#likeCount > .listItem').forEach(el => window.observer.observe(el));
 })();

@@ -38,7 +38,7 @@ const pushQueue = (el, bool) => {
   }
 };
 
-const observer = new IntersectionObserver(entries => {
+window.observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     pushQueue(e.target, e.isIntersecting);
   });
