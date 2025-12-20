@@ -16,7 +16,7 @@
   const likeCountHtml = popular.map(video => {
     return `
       <div class="listItem">
-        <a href="${video.url}" title="${video.title}"><img src="https://img.youtube.com/vi/${getQueryParam(video.url, 'v')}/maxresdefault.jpg" alt="サムネイル画像" style="aspect-ratio: 16/9"></a>
+        <a href="${video.url}" title="${video.title}" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/${getQueryParam(video.url, 'v')}/maxresdefault.jpg" alt="サムネイル画像" style="aspect-ratio: 16/9"></a>
         <div class="like">${video.likeCount}</div>
         <div class="view">${video.viewCount}</div>
       </div>
